@@ -1,15 +1,19 @@
-cd ~/.vim_runtime
+SCRIPT=$(realpath $0)
+SCRIPTPATH=`dirname $SCRIPT`
 
-echo 'set runtimepath+=~/.vim_runtime
+pushd $SCRIPTPATH
 
-source ~/.vim_runtime/vimrcs/basic.vim
-source ~/.vim_runtime/vimrcs/filetypes.vim
-source ~/.vim_runtime/vimrcs/plugins_config.vim
-source ~/.vim_runtime/vimrcs/extended.vim
+echo "set runtimepath+=$SCRIPTPATH
+
+source $SCRIPTPATH/vimrcs/basic.vim
+source $SCRIPTPATH/vimrcs/filetypes.vim
+source $SCRIPTPATH/vimrcs/plugins_config.vim
+source $SCRIPTPATH/vimrcs/extended.vim
 
 try
-source ~/.vim_runtime/my_configs.vim
+source $SCRIPTPATH/my_configs.vim
 catch
-endtry' > ~/.vimrc
+endtry" > ~/.vimrc
 
 echo "Installed the Ultimate Vim configuration successfully! Enjoy :-)"
+popd
